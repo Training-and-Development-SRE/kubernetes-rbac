@@ -4,7 +4,6 @@ SET _GROUP=%2
 SET _SERVERURL=%3
 SET _CA_LOCATION=%USERPROFILE%\.minikube
 SET _OUTPUTDIR=users\%_USERNAME%
-SET _SERVERURL=%3
 SET _CLUSTERNAME=minikube
 set RANDFILE=.rnd
 mkdir %_OUTPUTDIR%
@@ -23,11 +22,3 @@ kubectl config --kubeconfig=%_OUTPUTDIR%\config set-cluster minikube --certifica
 kubectl config --kubeconfig=%_OUTPUTDIR%\config set-credentials %_USERNAME% --client-certificate=%_OUTPUTDIR%\%_USERNAME%.crt  --client-key=%_OUTPUTDIR%\%_USERNAME%.key --embed-certs=true
 kubectl config --kubeconfig=%_OUTPUTDIR%\config set-context airwave-rbac --cluster=minikube --namespace=airwave-rbac --user=%_USERNAME% 
 kubectl config --kubeconfig=%_OUTPUTDIR%\config use-context airwave-rbac
-
-
-echo. >> rbac-user-rolebinding.yml
-echo --- >> rbac-user-rolebinding.yml
-echo apiVersion: v1 >> rbac-user-rolebinding.yml
-echo kind: ServiceAccount >> rbac-user-rolebinding.yml
-echo metadata: >> rbac-user-rolebinding.yml
-echo   name: %_USERNAME% >> rbac-user-rolebinding.yml
