@@ -21,11 +21,12 @@ metadata:
   name: airwave-rbac-su-binding
   namespace: airwave-rbac
 subjects:
-- kind: User
-  name: dar # Name is case sensitive
+- kind: Group
+  name: airwave-rbac-su-group # Name is case sensitive
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: Role #this must be Role or ClusterRole
   name: airwave-rbac-su-role # this must match the name of the Role or ClusterRole you wish to bind to
-  apiGroup: rbac.authorization.k8s.io
+  apiGroup: rbac.authorization.k8s.io--- 
 
+ 
