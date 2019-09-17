@@ -1,14 +1,8 @@
-# User Account in the form of a ServiceAccount
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: dar
----
 apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
+kind: ClusterRole
 metadata:
   namespace: airwave-rbac
-  name: airwave-rbac-su-role
+  name: airwave-rbac-su-cluster-role
 rules:
 - apiGroups: [""] # "" indicates the core API group
   resources: ["pods"]
@@ -16,16 +10,16 @@ rules:
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 # This role binding allows the user "dar" to read pods in the "airwave-rbac" namespace.
-kind: RoleBinding
+kind: ClusterRoleBinding
 metadata:
-  name: airwave-rbac-su-binding
+  name: airwave-rbac-su-clusterrole-binding
   namespace: airwave-rbac
 subjects:
 - kind: Group
   name: airwave-rbac-su-group # Name is case sensitive
   apiGroup: rbac.authorization.k8s.io
 roleRef:
-  kind: Role #this must be Role or ClusterRole
-  name: airwave-rbac-su-role # this must match the name of the Role or ClusterRole you wish to bind to
+  kind: ClusterRole #this must be Role or ClusterRole
+  name: airwave-rbac-su-cluster-role # this must match the name of the Role or ClusterRole you wish to bind to
   apiGroup: rbac.authorization.k8s.io
 

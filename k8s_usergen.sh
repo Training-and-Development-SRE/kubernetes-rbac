@@ -26,5 +26,5 @@ kubectl config --kubeconfig=$_OUTPUTDIR/config set-credentials $_USERNAME --clie
 kubectl config --kubeconfig=$_OUTPUTDIR/config set-context airwave-rbac --cluster=minikube --namespace=airwave-rbac --user=$_USERNAME 
 kubectl config --kubeconfig=$_OUTPUTDIR/config use-context airwave-rbac
 
-echo -e "\n---\napiVersion: v1\nkind: ServiceAccount\nmetadata:\n    name: $_USERNAME" >> rbac-user-rolebinding.yml
+echo -e "\n---\napiVersion: v1\nkind: ServiceAccount\nmetadata:\n  name: $_USERNAME" >> rbac-user-rolebinding.yml
 
