@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: dar
+  name: Dar
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
@@ -15,14 +15,14 @@ rules:
   verbs: ["get", "watch", "list"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
-# This role binding allows the group "airwave-rbac-su" to read pods in the "airwave-rbac" namespace.
+# This role binding allows the user "Dar" to read pods in the "airwave-rbac" namespace.
 kind: RoleBinding
 metadata:
   name: airwave-rbac-su-binding
   namespace: airwave-rbac
 subjects:
 - kind: User
-  name: dar # Name is case sensitive
+  name: Dar # Name is case sensitive
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: Role #this must be Role or ClusterRole
