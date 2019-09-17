@@ -1,8 +1,3 @@
-# User Account in the form of a ServiceAccount
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: dar
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
@@ -22,10 +17,12 @@ metadata:
   namespace: airwave-rbac
 subjects:
 - kind: Group
-  name: airwave-rbac-su-group # Name is case sensitive
+  name: superusers # Name is case sensitive
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: Role #this must be Role or ClusterRole
   name: airwave-rbac-su-role # this must match the name of the Role or ClusterRole you wish to bind to
   apiGroup: rbac.authorization.k8s.io
-
+# User Account in the form of a ServiceAccount
+# This part will be auto-generated
+ 
